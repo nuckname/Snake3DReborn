@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class SnakeCollision : MonoBehaviour
 {
-    public SpawnPower spawnPower;
 
     [SerializeField]
     private GameObject snakeBody;
@@ -12,8 +11,9 @@ public class SnakeCollision : MonoBehaviour
     [SerializeField]
     private PlayerMovement playerMovement;
 
-    [SerializeField]
+    private SpawnPower spawnPower;
     private SpawnSnakeBody spawnSnakeBody;
+
     private void Start()
     {
         spawnPower = FindObjectOfType<SpawnPower>();
@@ -31,11 +31,6 @@ public class SnakeCollision : MonoBehaviour
             Destroy(collision.gameObject);
             spawnPower.SpawningPower();
 
-            /*
-            float offset = -1.5f;
-            Vector3 snakeBodySpawn = new Vector3(transform.position.x + direction.x * offset, transform.position.y + direction.y * offset, transform.position.z + direction.z * offset);
-            Instantiate(snakeBody, snakeBodySpawn, Quaternion.identity);
-            */
 
             spawnSnakeBody.SpawnSnakeBodyPart();
 

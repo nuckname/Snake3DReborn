@@ -5,6 +5,12 @@ using UnityEngine;
 public class FollowSnakeBody : MonoBehaviour
 {
     [SerializeField]
+    private float moveSpeed = 5f;
+
+    [SerializeField]
+    private Vector3 testPlayerTransformOldPlayerPosition;
+
+    [SerializeField]
     private Vector3 currentTransform;
     // Start is called before the first frame update
     void Start()
@@ -22,6 +28,10 @@ public class FollowSnakeBody : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        currentTransform = gameObject.transform.position;
+        testPlayerTransformOldPlayerPosition = this.gameObject.transform.position;
+        
+        this.gameObject.transform.position = Vector3.MoveTowards(transform.position, testPlayerTransformOldPlayerPosition, moveSpeed * Time.deltaTime);
+
+        //currentTransform = gameObject.transform.position;
     }
 }

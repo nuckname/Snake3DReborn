@@ -9,24 +9,25 @@ public class SpawnPower : MonoBehaviour
     [SerializeField]
     private GameObject powerUp;
 
-
-
     private int spawnCoordinateWidth;
     private int spawnCoordinateHeight;
     private int spawnCoordinateLength;
 
     private Vector3 spawnCoorinates;
 
-    // Start is called before the first frame update
     void Start()
     {
+        //debug Power Up
+        Instantiate(powerUp, new Vector3(0,0,3), Quaternion.identity);
+        Instantiate(powerUp, new Vector3(0,0,6), Quaternion.identity);
+        Instantiate(powerUp, new Vector3(0,0,9), Quaternion.identity);
+
         gridGenerator = GetComponent<GridGenerator>();
         SpawningPower();
     }
 
     public void SpawningPower()
     {
-
         // So it always divisible by 3 for each dimension
         do
         {

@@ -5,15 +5,11 @@ using UnityEngine;
 public class FollowSnakeHead : MonoBehaviour
 {
     private PlayerMovement playerMovement;
-    private GetPlayerPosition getPlayerPosition;
-
-    [SerializeField]
-    private Vector3 testPlayerTransform;
 
     private float moveSpeed = 3f;
 
     [SerializeField]
-    private Transform snakeHead;
+    private Transform snakeMovesTo;
     [SerializeField]
     private int bodyIndex = 0;
 
@@ -21,47 +17,36 @@ public class FollowSnakeHead : MonoBehaviour
 
     void Start()
     {
+        snakeMovesTo.parent = null;
+        snakeMovesTo.name = "asdeasdfa";
+        snakeMovesTo.position = gameObject.transform.position;
+        print("Spawn pos: " + snakeMovesTo.position);
+
         playerMovement = FindObjectOfType<PlayerMovement>();
 
-        // Initialize the list with the snake head
-        bodyParts.Add(snakeHead);
-
-        // Create initial body parts (you can adjust this based on your game logic)
-        for (int i = 0; i < 2; i++)
-        {
-            AddBodyPart();
-        }
     }
 
-    // Add a new body part to the snake
-    void AddBodyPart()
+    //called from PlayerMovement when key is pressed
+    public void MoveSnakeBody()
     {
-        GameObject newBodyPart = new GameObject("BodyPart" + bodyIndex);
-        bodyIndex++;
-        newBodyPart.transform.position = bodyParts[bodyParts.Count - 1].position;
-        bodyParts.Add(newBodyPart.transform);
-    }
-
-    // Move all the body parts to their respective positions
-    void MoveSnakeBody()
-    {
-        for (int i = bodyParts.Count - 1; i > 0; i--)
-        {
-            bodyParts[i].position = bodyParts[i - 1].position;
-        }
-
-        // Move the first body part to the head position
-        bodyParts[0].position = snakeHead.position;
+        //gets the old player position
+        snakeMovesTo.transform.position = playerMovement.oldPlayerPosition;
+        print("What snake moves too" + snakeMovesTo.transform.position);
+        
+        //moves to it
+        transform.position = Vector3.MoveTowards(transform.position, snakeMovesTo.position, moveSpeed * Time.deltaTime);
     }
 
     void Update()
     {
-        testPlayerTransform = gameObject.transform.position;
+        //test?
+        snakeMovesTo.transform.position = playerMovement.oldPlayerPosition;
 
-        // Call MoveSnakeBody to update the positions of all body parts
-        MoveSnakeBody();
+        //test?
+        snakeMovesTo.transform.position = new Vector3(playerMovement.oldPlayerPosition.x, playerMovement.oldPlayerPosition.y, playerMovement.oldPlayerPosition.z);
 
-        // Move the head towards the desired position
-        snakeHead.position = Vector3.MoveTowards(snakeHead.position, playerMovement.oldPlayerPosition, moveSpeed * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, snakeMovesTo.position, moveSpeed * Time.deltaTime);
+
     }
 }
+

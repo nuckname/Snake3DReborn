@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 87505494209840539}
   - component: {fileID: 1428538237335789148}
   - component: {fileID: 9149289397315020130}
+  - component: {fileID: -1147101029915470805}
   m_Layer: 0
   m_Name: SnakeBodyFollowBody
   m_TagString: snakePoint
@@ -142,6 +143,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9e043f06d117574dbead644df5f6b3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  testPlayerTransform: {x: 0, y: 0, z: 0}
-  snakeHead: {fileID: 1359031379760092762}
+  snakeMovesTo: {fileID: 1359031379760092762}
   bodyIndex: 0
+--- !u!114 &-1147101029915470805
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6299504183086283997}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f893d89d0df6cd44fbba47a98bd1aa89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 5
+  testPlayerTransformOldPlayerPosition: {x: 0, y: 0, z: 0}
+  currentTransform: {x: 0, y: 0, z: 0}
