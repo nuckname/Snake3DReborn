@@ -1569,7 +1569,7 @@ GameObject:
   - component: {fileID: 2142070945}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1589,10 +1589,10 @@ MonoBehaviour:
   moveSpeed: 0
   playerPoint: {fileID: 2009447152}
   direction: {x: 0, y: 0, z: 0}
-  getPlayerPosition: {fileID: 2142070945}
+  getObjectPosition: {fileID: 2142070945}
   oldPlayerPosition: {x: 0, y: 0, z: 0}
   oldPlayerPositions: []
-  snakeMovesTo: {fileID: 2009447152}
+  followSnakeHead: {fileID: 0}
 --- !u!65 &2142070938
 BoxCollider:
   m_ObjectHideFlags: 0

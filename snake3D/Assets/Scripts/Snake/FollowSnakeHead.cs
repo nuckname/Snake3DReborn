@@ -4,16 +4,25 @@ using UnityEngine;
 
 public class FollowSnakeHead : MonoBehaviour
 {
+    //replace FollowSnakeBody so that its the only script used.
+    
     private PlayerMovement playerMovement;
 
     private float moveSpeed = 3f;
+
+    [SerializeField]
+    private Vector3 testPlayerTransformOldPlayerPosition;
+
+    [SerializeField]
+    private GetObjectPosition getObjectPosition;
 
     [SerializeField]
     private Transform snakeMovesTo;
     [SerializeField]
     private int bodyIndex = 0;
 
-    private List<Transform> bodyParts = new List<Transform>();
+    private int counter = 0;
+
 
     void Start()
     {
@@ -24,28 +33,45 @@ public class FollowSnakeHead : MonoBehaviour
 
         playerMovement = FindObjectOfType<PlayerMovement>();
 
+        MoveSnakeBody();
+
     }
 
-    //called from PlayerMovement when key is pressed
     public void MoveSnakeBody()
     {
         //gets the old player position
-        snakeMovesTo.transform.position = playerMovement.oldPlayerPosition;
+        //snakeMovesTo.transform.position = playerMovement.oldPlayerPosition;
+        print("snakeMovesTo.transform.position: " + snakeMovesTo.transform.position);
+        snakeMovesTo.transform.position = playerMovement.oldPlayerPositions[counter];
+        counter += 1;
+
+
+        //we want to move the pointer not the transform.
+        SpawnSnakeBody.snakeBodies[counter].transform.position = playerMovement.oldPlayerPositions[counter];
+        Vector3 test = snakeMovesTo.transform.position;
+       // SpawnSnakeBody.snakeBodies[counter].GetComponentInParent<SnakeBody>
+
+        //print("MoveSnakeBody()");
+
+        /*
+        snakeMovesTo.transform.position = getObjectPosition.GetPlayerPositionFunction(gameObject);
+
         print("What snake moves too" + snakeMovesTo.transform.position);
         
         //moves to it
+    */
         transform.position = Vector3.MoveTowards(transform.position, snakeMovesTo.position, moveSpeed * Time.deltaTime);
     }
 
     void Update()
     {
         //test?
-        snakeMovesTo.transform.position = playerMovement.oldPlayerPosition;
+        //snakeMovesTo.transform.position = getObjectPosition.GetPlayerPositionFunction(gameObject);
 
         //test?
-        snakeMovesTo.transform.position = new Vector3(playerMovement.oldPlayerPosition.x, playerMovement.oldPlayerPosition.y, playerMovement.oldPlayerPosition.z);
+        //snakeMovesTo.transform.position = new Vector3(playerMovement.oldPlayerPosition.x, playerMovement.oldPlayerPosition.y, playerMovement.oldPlayerPosition.z);
 
-        transform.position = Vector3.MoveTowards(transform.position, snakeMovesTo.position, moveSpeed * Time.deltaTime);
+        snakeMovesTo.transform.position = Vector3.MoveTowards(transform.position, snakeMovesTo.position, moveSpeed * Time.deltaTime);
 
     }
 }

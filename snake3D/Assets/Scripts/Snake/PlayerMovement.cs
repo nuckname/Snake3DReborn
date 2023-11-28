@@ -11,7 +11,7 @@ public class PlayerMovement : MonoBehaviour
     public Vector3 direction;
 
     [SerializeField]
-    private GetPlayerPosition getPlayerPosition;
+    private GetObjectPosition getObjectPosition;
 
     public Vector3 oldPlayerPosition = new Vector3(0, 0, 0);
 
@@ -19,10 +19,16 @@ public class PlayerMovement : MonoBehaviour
 
     private int historyCounter = 0;
 
+    [SerializeField]
+    private GameObject followSnakeHead;
+
+
     private void Start()
     {
         playerPoint.parent = null;
         moveSpeed = 3f;
+
+        followSnakeHead = GameObject.FindWithTag("Player");
     }
 
     void MovePlayer(Vector3 movementDirection, Vector3 playerInputDirection)
@@ -30,9 +36,10 @@ public class PlayerMovement : MonoBehaviour
         direction = playerInputDirection;
         playerPoint.position += movementDirection;
 
+        oldPlayerPosition = getObjectPosition.GetPlayerPositionFunction(gameObject);
+        //print("oldPlayerPosition value: " + oldPlayerPosition);
 
-        oldPlayerPosition = getPlayerPosition.GetPlayerPositionFunction(gameObject);
-        print("oldPlayerPosition value: " + oldPlayerPosition);
+        
 
         PlayerHistoryOfMovement();
     }
@@ -69,8 +76,7 @@ public class PlayerMovement : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.W))
             {
-                MovePlayer(new Vector3(0, 0, moveSpeed), Vector3.forward);
-                print("W Prsesed");
+                MovePlayer(new Vector3(0, 0, moveSpeed), Vector3.forward); 
             }
 
             if (Input.GetKey(KeyCode.A))

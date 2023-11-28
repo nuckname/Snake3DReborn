@@ -24,9 +24,7 @@ public class SnakeCollision : MonoBehaviour
 
         if (collision.gameObject.CompareTag("power"))
         {
-            Vector3 direction;
-            print(playerMovement.direction);
-            direction = playerMovement.direction;
+            Vector3 direction = playerMovement.direction;
             //lets get the direction of the snake.
             Destroy(collision.gameObject);
             spawnPower.SpawningPower();

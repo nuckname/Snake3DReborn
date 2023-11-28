@@ -11,10 +11,15 @@ public class FollowSnakeBody : MonoBehaviour
     private Vector3 testPlayerTransformOldPlayerPosition;
 
     [SerializeField]
+    private GetObjectPosition getObjectPosition;
+
+    [SerializeField]
     private Vector3 currentTransform;
     // Start is called before the first frame update
     void Start()
     {
+        testPlayerTransformOldPlayerPosition = getObjectPosition.GetPlayerPositionFunction(gameObject);
+        testPlayerTransformOldPlayerPosition = this.gameObject.transform.position;
         print(SpawnSnakeBody.amountOfBodiesSpawned);
         int amountOfBodies = SpawnSnakeBody.amountOfBodiesSpawned;
 
@@ -28,7 +33,7 @@ public class FollowSnakeBody : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        testPlayerTransformOldPlayerPosition = this.gameObject.transform.position;
+        
         
         this.gameObject.transform.position = Vector3.MoveTowards(transform.position, testPlayerTransformOldPlayerPosition, moveSpeed * Time.deltaTime);
 

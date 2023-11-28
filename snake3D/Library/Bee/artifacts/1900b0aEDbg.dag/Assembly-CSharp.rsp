@@ -354,7 +354,7 @@
 -r:"Library/Bee/artifacts/1900b0aEDbg.dag/UnityEditor.UI.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aEDbg.dag/UnityEngine.UI.ref.dll"
 "Assets/FollowSnakeBody.cs"
-"Assets/Scripts/GetPlayerPosition.cs"
+"Assets/Scripts/GetObjectPosition.cs"
 "Assets/Scripts/Manager/CameraCenter.cs"
 "Assets/Scripts/Manager/GameManager.cs"
 "Assets/Scripts/Manager/GridGenerator.cs"
