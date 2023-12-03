@@ -30,11 +30,12 @@ public class GridGenerator : MonoBehaviour
             {
                 for (int z = 0; z < gridX; z++)
                 {
+                    //this is just for debugging remove visual later.
+                    //maybe add the edge of boxes 
                     Vector3 spawnPosition = new Vector3(x * girdSpacing, y * girdSpacing, z * girdSpacing);
                     currentGridValues[x, y, z] = spawnPosition;
                     //print(currentGridValues[x, y, z]);
 
-                    //this is just for debugging remove visual later.
                     GameObject cube = Instantiate(cubePrefab, spawnPosition, Quaternion.identity);
 
                     cube.name = $"grid: {x}, {y}, {z}";

@@ -6,7 +6,6 @@ public class GetObjectPosition : MonoBehaviour
 {
     public Vector3 GetPlayerPositionFunction(GameObject player)
     {
-
         Vector3 playerGridPosition = new Vector3(
         player.transform.position.x,
         player.transform.position.y,
