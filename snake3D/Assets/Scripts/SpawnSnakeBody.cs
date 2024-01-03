@@ -7,29 +7,24 @@ public class SpawnSnakeBody : MonoBehaviour
     public static int amountOfBodiesSpawned;
     
     [SerializeField]
-    private PlayerMovement playerMovement;
+    private HistoryOfPlayerMovement historyOfPlayerMovement;
     
     private int snakeSpawnCounterPosition = 0;
 
     [SerializeField]
     private GameObject snakeBody;
 
+    //should use at some point. STATIC BAD
     public static List<Transform> snakeParentBodies = new List<Transform>();
     private void Start()
     {
-        playerMovement = FindObjectOfType<PlayerMovement>();
+        historyOfPlayerMovement = FindObjectOfType<HistoryOfPlayerMovement>();
     }
 
     //Called On SnakeCollision
     public void SpawnSnakeBodyPart()
     {
-        //print("SpawnSnakeBodyTransform: " + playerMovement.oldPlayerPositions[amountOfBodiesSpawned]);
-        //print("amountOfBodiesSpawned: " + amountOfBodiesSpawned);
-
-        //Vector3 snakeBodyPosition = playerMovement.oldPlayerPosition;
-        //going to need to change [0].
-        Instantiate(snakeBody, playerMovement.oldPlayerPositions[snakeSpawnCounterPosition], Quaternion.identity);
-        print("snakeBody.transform.parent: " + snakeBody.transform.parent);
+        Instantiate(snakeBody, historyOfPlayerMovement.oldPlayerPositions[snakeSpawnCounterPosition], Quaternion.identity);
         snakeParentBodies.Add(snakeBody.transform.parent);
 
         snakeSpawnCounterPosition += 1;

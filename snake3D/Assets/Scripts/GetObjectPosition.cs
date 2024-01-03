@@ -4,15 +4,14 @@ using UnityEngine;
 
 public class GetObjectPosition : MonoBehaviour
 {
-    public Vector3 GetPlayerPositionFunction(GameObject player)
+    public static Vector3 GetPlayerPositionFunction(GameObject player)
     {
         Vector3 playerGridPosition = new Vector3(
-        player.transform.position.x,
-        player.transform.position.y,
-        player.transform.position.z);
+            Mathf.Round(player.transform.position.x),
+            Mathf.Round(player.transform.position.y),
+            Mathf.Round(player.transform.position.z)
+        );
 
-        //print("return  GetPlayerPositionFunction: " + playerGridPosition);
         return playerGridPosition;
-
     }
 }

@@ -1384,6 +1384,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13e31a750c4ef8647820ea766b5a35c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  historyOfPlayerMovement: {fileID: 0}
   snakeBody: {fileID: 6299504183086283997, guid: 9360b8645784bcb46aa5ad45d63159a4, type: 3}
 --- !u!1 &2009447151
 GameObject:
@@ -1563,6 +1564,7 @@ GameObject:
   - component: {fileID: 2142070940}
   - component: {fileID: 2142070939}
   - component: {fileID: 2142070938}
+  - component: {fileID: 2142070946}
   - component: {fileID: 2142070937}
   - component: {fileID: 2142070942}
   - component: {fileID: 2142070944}
@@ -1590,9 +1592,7 @@ MonoBehaviour:
   playerPoint: {fileID: 2009447152}
   direction: {x: 0, y: 0, z: 0}
   getObjectPosition: {fileID: 2142070945}
-  oldPlayerPosition: {x: 0, y: 0, z: 0}
-  oldPlayerPositions: []
-  followSnakeHead: {fileID: 0}
+  historyOfPlayerMovement: {fileID: 2142070946}
 --- !u!65 &2142070938
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1700,6 +1700,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d98a48a60c6d9ce45891b360bfccd882, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  historyOfPlayerMovement: {fileID: 2142070946}
   snakeBody: {fileID: 6299504183086283997, guid: 9360b8645784bcb46aa5ad45d63159a4, type: 3}
   playerMovement: {fileID: 2142070937}
 --- !u!114 &2142070945
@@ -1714,6 +1715,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cba57ec0758b9c4985b46cb88c38266, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2142070946
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2142070935}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d1e59fde4eb1e843974fca488c78fe8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  oldPlayerPositions: []
 --- !u!1001 &5979699760117995222
 PrefabInstance:
   m_ObjectHideFlags: 0

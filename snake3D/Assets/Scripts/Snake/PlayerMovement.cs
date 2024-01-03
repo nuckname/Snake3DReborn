@@ -13,60 +13,26 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     private GetObjectPosition getObjectPosition;
 
-    public Vector3 oldPlayerPosition = new Vector3(0, 0, 0);
-
-    public List<Vector3> oldPlayerPositions = new List<Vector3>();
-
-    private int historyCounter = 0;
-
     [SerializeField]
-    private GameObject followSnakeHead;
+    private HistoryOfPlayerMovement historyOfPlayerMovement;
 
 
     private void Start()
     {
         playerPoint.parent = null;
         moveSpeed = 3f;
-
-        followSnakeHead = GameObject.FindWithTag("Player");
     }
 
+    //called after every key press.
     void MovePlayer(Vector3 movementDirection, Vector3 playerInputDirection)
     {
+        //I dont think this does anything
         direction = playerInputDirection;
+        //I dont think this does anything
         playerPoint.position += movementDirection;
 
-        oldPlayerPosition = getObjectPosition.GetPlayerPositionFunction(gameObject);
-        //print("oldPlayerPosition value: " + oldPlayerPosition);
-
-        
-
-        PlayerHistoryOfMovement();
     }
 
-    void PlayerHistoryOfMovement()
-    {
-
-        if (oldPlayerPositions.Count <= SpawnSnakeBody.amountOfBodiesSpawned)
-        {
-            //fills up list
-            oldPlayerPositions.Add(new Vector3(Mathf.Round(oldPlayerPosition.x), Mathf.Round(oldPlayerPosition.y), Mathf.Round(oldPlayerPosition.z)));
-        }
-        else
-        {
-            //replaces old list
-            oldPlayerPositions[historyCounter] = (new Vector3(Mathf.Round(oldPlayerPosition.x), Mathf.Round(oldPlayerPosition.y), Mathf.Round(oldPlayerPosition.z)));
-            
-            if(historyCounter < SpawnSnakeBody.amountOfBodiesSpawned)
-            {
-                historyCounter += 1;
-            }
-            else
-            {
-                historyCounter = 0;
-            }
-        }
-    }
 
     void Update()
     {
@@ -74,6 +40,7 @@ public class PlayerMovement : MonoBehaviour
         
         if (Vector3.Distance(transform.position, playerPoint.position) <= 0.05f)
         {
+            //try get snakeScript?
             if (Input.GetKey(KeyCode.W))
             {
                 MovePlayer(new Vector3(0, 0, moveSpeed), Vector3.forward); 

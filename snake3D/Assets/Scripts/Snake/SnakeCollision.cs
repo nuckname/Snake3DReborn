@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class SnakeCollision : MonoBehaviour
 {
+    [SerializeField]
+    private HistoryOfPlayerMovement historyOfPlayerMovement;
 
     [SerializeField]
     private GameObject snakeBody;
@@ -24,14 +26,14 @@ public class SnakeCollision : MonoBehaviour
 
         if (collision.gameObject.CompareTag("power"))
         {
+            print("collision:" + collision);
             Vector3 direction = playerMovement.direction;
             //lets get the direction of the snake.
             Destroy(collision.gameObject);
+
+            historyOfPlayerMovement.PlayerHistoryList();
             spawnPower.SpawningPower();
-
-
             spawnSnakeBody.SpawnSnakeBodyPart();
-
         }
 
         /*
