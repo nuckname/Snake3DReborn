@@ -31,6 +31,8 @@ public class PlayerMovement : MonoBehaviour
         //I dont think this does anything
         playerPoint.position += movementDirection;
 
+        historyOfPlayerMovement.AddMovementWithCurrentListValue();
+
     }
 
 
@@ -40,7 +42,6 @@ public class PlayerMovement : MonoBehaviour
         
         if (Vector3.Distance(transform.position, playerPoint.position) <= 0.05f)
         {
-            //try get snakeScript?
             if (Input.GetKey(KeyCode.W))
             {
                 MovePlayer(new Vector3(0, 0, moveSpeed), Vector3.forward); 
