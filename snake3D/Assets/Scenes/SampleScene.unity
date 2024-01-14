@@ -1274,12 +1274,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1991923108}
+  - component: {fileID: 1991923112}
   - component: {fileID: 1991923109}
   - component: {fileID: 1991923110}
   - component: {fileID: 1991923111}
-  - component: {fileID: 1991923112}
   - component: {fileID: 1991923113}
   - component: {fileID: 1991923114}
+  - component: {fileID: 1991923115}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1358,6 +1359,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f24070240ee510d4cb63942dcfe4cfbc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawnPower: {fileID: 1991923109}
+  spawnSnakeBody: {fileID: 1991923114}
 --- !u!114 &1991923113
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1386,6 +1389,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   historyOfPlayerMovement: {fileID: 0}
   snakeBody: {fileID: 6299504183086283997, guid: 9360b8645784bcb46aa5ad45d63159a4, type: 3}
+  snakeParentBodies: []
+--- !u!114 &1991923115
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1991923107}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9e043f06d117574dbead644df5f6b3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  historyOfPlayerMovement: {fileID: 0}
+  spawnSnakeBody: {fileID: 1991923114}
 --- !u!1 &2009447151
 GameObject:
   m_ObjectHideFlags: 0
@@ -1593,6 +1611,7 @@ MonoBehaviour:
   direction: {x: 0, y: 0, z: 0}
   getObjectPosition: {fileID: 2142070945}
   historyOfPlayerMovement: {fileID: 2142070946}
+  followSnakeHead: {fileID: 0}
 --- !u!65 &2142070938
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1700,9 +1719,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d98a48a60c6d9ce45891b360bfccd882, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  historyOfPlayerMovement: {fileID: 2142070946}
   snakeBody: {fileID: 6299504183086283997, guid: 9360b8645784bcb46aa5ad45d63159a4, type: 3}
-  playerMovement: {fileID: 2142070937}
+  gameManager: {fileID: 1991923112}
 --- !u!114 &2142070945
 MonoBehaviour:
   m_ObjectHideFlags: 0

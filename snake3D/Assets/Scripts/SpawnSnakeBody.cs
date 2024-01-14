@@ -14,8 +14,7 @@ public class SpawnSnakeBody : MonoBehaviour
     [SerializeField]
     private GameObject snakeBody;
 
-    //should use at some point. STATIC BAD
-    public static List<Transform> snakeParentBodies = new List<Transform>();
+    public List<GameObject> snakeParentBodies = new List<GameObject>();
     private void Start()
     {
         historyOfPlayerMovement = FindObjectOfType<HistoryOfPlayerMovement>();
@@ -24,8 +23,9 @@ public class SpawnSnakeBody : MonoBehaviour
     //Called On SnakeCollision
     public void SpawnSnakeBodyPart()
     {
-        Instantiate(snakeBody, historyOfPlayerMovement.oldPlayerPositions[snakeSpawnCounterPosition], Quaternion.identity);
-        snakeParentBodies.Add(snakeBody.transform.parent);
+        GameObject newSnakeBody = Instantiate(snakeBody, historyOfPlayerMovement.oldPlayerPositions[snakeSpawnCounterPosition], Quaternion.identity);
+        //loop through this in FollowSnakeHead.cs 
+        snakeParentBodies.Add(newSnakeBody);
 
         snakeSpawnCounterPosition += 1;
         amountOfBodiesSpawned += 1;

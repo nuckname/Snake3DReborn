@@ -16,7 +16,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     private HistoryOfPlayerMovement historyOfPlayerMovement;
 
-
+    [SerializeField]
+    private FollowSnakeHead followSnakeHead;
     private void Start()
     {
         playerPoint.parent = null;
