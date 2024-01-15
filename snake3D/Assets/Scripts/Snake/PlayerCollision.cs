@@ -8,15 +8,18 @@ public class PlayerCollision : MonoBehaviour
     private GameObject snakeBody;
 
     //useful for when the snake moves by itself. probs move to another script though. (playerMovement.direction)
-    /*
+    
     [SerializeField]
-    private PlayerMovement playerMovement;
-    */
+    private HistoryOfPlayerMovement playerMovement;
+    
 
     [SerializeField]
     private GameManager gameManager;
 
-
+    private void Start()
+    {
+        playerMovement = GetComponent<HistoryOfPlayerMovement>();
+    }
     private void OnCollisionEnter(Collision collision)
     {
 

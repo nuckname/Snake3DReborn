@@ -27,13 +27,10 @@ public class PlayerMovement : MonoBehaviour
     //called after every key press.
     void MovePlayer(Vector3 movementDirection, Vector3 playerInputDirection)
     {
-        //I dont think this does anything
         direction = playerInputDirection;
-        //I dont think this does anything
         playerPoint.position += movementDirection;
 
         historyOfPlayerMovement.AddMovementWithCurrentListValue();
-
     }
 
 

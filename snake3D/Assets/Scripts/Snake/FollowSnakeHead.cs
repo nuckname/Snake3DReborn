@@ -12,13 +12,13 @@ public class FollowSnakeHead : MonoBehaviour
 
     private void Start()
     {
-        historyOfPlayerMovement = FindObjectOfType<HistoryOfPlayerMovement>();
+        //historyOfPlayerMovement = FindObjectOfType<HistoryOfPlayerMovement>();
     }
 
     //called after every key press
     public void UpdateSnakeBodies()
     {
-        print(spawnSnakeBody.snakeParentBodies[1]);
+        //print(spawnSnakeBody.snakeParentBodies[1]);
     }
 
 }

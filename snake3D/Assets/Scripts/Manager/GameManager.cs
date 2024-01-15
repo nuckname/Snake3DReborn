@@ -9,9 +9,12 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private SpawnSnakeBody spawnSnakeBody;
 
+    private HistoryOfPlayerMovement historyOfPlayerMovement;
+
 
     void Start()
     {
+        historyOfPlayerMovement = FindObjectOfType<HistoryOfPlayerMovement>();
     }
 
     // Update is called once per frame
@@ -24,7 +27,8 @@ public class GameManager : MonoBehaviour
     {
         spawnPower.SpawningPower();
         spawnSnakeBody.SpawnSnakeBodyPart();
-        
+        historyOfPlayerMovement.oldPlayerPositions.Add(new Vector3(0, 0, 0));
+
     }
 
     public void MovingLogicOrder()
