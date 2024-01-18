@@ -11,10 +11,14 @@ public class GameManager : MonoBehaviour
 
     private HistoryOfPlayerMovement historyOfPlayerMovement;
 
+    private PlayerMovement playerMovement;
+
 
     void Start()
     {
-        historyOfPlayerMovement = FindObjectOfType<HistoryOfPlayerMovement>();
+         historyOfPlayerMovement = FindObjectOfType<HistoryOfPlayerMovement>();
+
+         playerMovement = FindObjectOfType<PlayerMovement>();
     }
 
     // Update is called once per frame
@@ -28,6 +32,13 @@ public class GameManager : MonoBehaviour
         spawnPower.SpawningPower();
         spawnSnakeBody.SpawnSnakeBodyPart();
         historyOfPlayerMovement.oldPlayerPositions.Add(new Vector3(0, 0, 0));
+
+    }
+
+    //called from PlayerMovement.cs
+    //called from FollowSnakeHead.cs
+    public void CalledAfterEachKeyPress()
+    {
 
     }
 
